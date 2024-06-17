@@ -1,0 +1,46 @@
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+ul{
+  list-style: none;
+  padding: 5px;
+
+}
+
+.container{
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  display: flex;
+  gap: 10px;
+
+  
+}
+
+.container ul {
+  flex: 1;
+  border: 1px solid grey;
+
+}
+
+.container ul li {
+  flex: 1;
+  border: 1px solid grey;
+
+  height: 200px;
+  background: white;
+  border: 1px solid;
+  border-radius: 8px;
+  padding: 20px;
+
+}
+
+
+.container ul li{
+  background-color: grey;
+}
