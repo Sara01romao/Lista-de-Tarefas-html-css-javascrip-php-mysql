@@ -13,7 +13,7 @@
 
 
     <div class="tab">
-        <button class="tablinks" onclick="openCity(event, 'iniciar-coluna')">Iniciar</button>
+        <button class="tablinks" id="defaultOpen" onclick="openCity(event, 'iniciar-coluna')">Iniciar</button>
         <button class="tablinks" onclick="openCity(event, 'fazendo-coluna')">Fazendo</button>
         <button class="tablinks" onclick="openCity(event, 'concluido-coluna')">Concluído</button>
     </div>
@@ -78,7 +78,7 @@
 
 
 
-        function openCity(evt, cityName) {
+        function openCity(evt, colunaName) {
             var i, tabcontent, tablinks;
             tabcontent = document.getElementsByClassName("tabcontent");
             for (i = 0; i < tabcontent.length; i++) {
@@ -88,9 +88,11 @@
             for (i = 0; i < tablinks.length; i++) {
                 tablinks[i].className = tablinks[i].className.replace(" active", "");
             }
-            document.getElementById(cityName).style.display = "block";
+            document.getElementById(colunaName).style.display = "block";
             evt.currentTarget.className += " active";
         }
+
+        document.getElementById("defaultOpen").click();
     </script>
 </body>
 </html>
