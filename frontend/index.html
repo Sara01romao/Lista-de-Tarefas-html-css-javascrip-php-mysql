@@ -12,26 +12,44 @@
 <body>
 
 
+    <div class="tab">
+        <button class="tablinks" onclick="openCity(event, 'iniciar-coluna')">Iniciar</button>
+        <button class="tablinks" onclick="openCity(event, 'fazendo-coluna')">Fazendo</button>
+        <button class="tablinks" onclick="openCity(event, 'concluido-coluna')">Concluído</button>
+    </div>
+    
     <div class="container">
-        <ul id="inicio">
-          <li>Item 1</li>
-          <li>Item 2</li>
-        
-        </ul>
-        
-      <ul id="fazendo">
-          <li>Item 1</li>
-          <li>Item 2</li>
-          <li>Item 3</li>
-         
-      </ul>
-
-      <ul id="concluido">
-        <li>Item 1</li>
-        <li>Item 2</li>
-        <li>Item 3</li>
+        <div class="coluna-estagio tabcontent" id="iniciar-coluna">
+            <h2>Iniciar</h2>
+            <ul id="inicio">
+                <li>Item 1</li>
+                <li>Item 2</li>
+              
+            </ul>
+        </div>
        
-    </ul>
+        <div class="coluna-estagio tabcontent" id="fazendo-coluna">
+            <h2>Fazendo</h2>
+            <ul id="fazendo">
+                <li>Item 1</li>
+                <li>Item 2</li>
+                <li>Item 3</li>
+               
+            </ul>
+        </div>
+        
+      
+        <div class="coluna-estagio tabcontent" id="concluido-coluna">
+            <h2>Concluído</h2>
+            <ul id="concluido">
+                <li>Item 1</li>
+                <li>Item 2</li>
+                <li>Item 3</li>
+               
+            </ul>
+        </div>
+
+      
     </div>
  
    
@@ -44,7 +62,7 @@
       
 
         new Sortable(inicio, {
-            group: 'shared', // set both lists to same group
+            group: 'shared', 
             animation: 150
         });
 
@@ -56,6 +74,23 @@
             group: 'shared',
             animation: 150
         });
+
+
+
+
+        function openCity(evt, cityName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(cityName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
     </script>
 </body>
 </html>
