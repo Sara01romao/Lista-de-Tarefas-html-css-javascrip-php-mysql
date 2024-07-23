@@ -5,6 +5,10 @@
   box-sizing: border-box;
 }
 
+body{
+  font-family: "Inter", sans-serif;
+}
+
 
 ul{
   list-style: none;
@@ -24,7 +28,7 @@ ul{
 
 .container ul {
   flex: 1;
-  border: 1px solid grey;
+ 
   height: 100%;
 
 }
@@ -36,15 +40,23 @@ ul{
 
 .container ul .card {
   flex: 1;
-  border: 1px solid grey;
   background: white;
-  border: 1px solid;
   border-radius: 8px;
   padding: 20px;
-  background-color: grey;
+  background-color: #fff;
   position: relative;
   margin-bottom: 20px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+}
 
+.coluna-estagio:nth-child(1) .card{
+  background: rgba(252, 251, 188, 0.479);
+}
+.coluna-estagio:nth-child(2) .card{
+  background: rgba(11, 178, 207, 0.301);
+}
+.coluna-estagio:nth-child(3) .card{
+  background: rgba(57, 207, 11, 0.301);
 }
 
 
@@ -84,9 +96,12 @@ ul{
   gap: 5px;
   background: #fff;
   border-radius: 4px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   display: none;
  
 }
+
+
 
 .menu-card.active{
   display: flex;
@@ -105,8 +120,8 @@ ul{
 }
 
 .menu-card button:hover:nth-child(1){
-    border-top-left-radius: 4px;
-    border-top-right-radius: 4px;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
 }
 
 .menu-card button:nth-child(3){
@@ -138,8 +153,6 @@ ul{
 }
 
 
-
-
 .menu-card button:hover{
   background: #ccc;
 }
@@ -155,8 +168,6 @@ ul{
   padding: 5px;
   border-radius: 50%;
 }
-
-
 
 
 .tab {
