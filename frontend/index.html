@@ -71,7 +71,7 @@
                     </div>
                    
                     <p class="etiqueta"><span></span> Urgente</p>
-                    <h3>Aula de inglês</h3>
+                    <p class="titulo-tarefa">Aula de Inglês</p>
 
 
                 </li>
@@ -119,7 +119,10 @@
                     </div>
                    
                     <p class="etiqueta"><span></span> Urgente</p>
-                    <h3>Aula de inglês</h3>
+                    <p class="titulo-tarefa">
+                        criar seu cartão de visita digital criar seu cartão de
+                        visita digital 
+                    </p>
 
 
                 </li>
@@ -154,80 +157,6 @@
  
    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script>
-        // Inicializar o SortableJS
-        var inicio= document.getElementById('inicio');
-        var fazendo = document.getElementById('fazendo');
-        var concluido = document.getElementById('concluido');
-      
-
-        new Sortable(inicio, {
-            group: 'shared', 
-            animation: 150
-        });
-
-        new Sortable(fazendo, {
-            group: 'shared',
-            animation: 150
-        });
-        new Sortable(concluido, {
-            group: 'shared',
-            animation: 150
-        });
-
-        
-
-
-        function openColuna(evt, colunaName) {
-            var i, tabcontent, tablinks;
-            tabcontent = document.getElementsByClassName("tabcontent");
-            for (i = 0; i < tabcontent.length; i++) {
-                tabcontent[i].style.display = "none";
-            }
-            tablinks = document.getElementsByClassName("tablinks");
-            for (i = 0; i < tablinks.length; i++) {
-                tablinks[i].className = tablinks[i].className.replace(" active", "");
-            }
-            document.getElementById(colunaName).style.display = "block";
-            evt.currentTarget.className += " active";
-        }
-
-        document.getElementById("defaultOpen").click();
-
-
-        let btnsOpen = document.querySelectorAll(".open-card-option");
-        console.table(btnsOpen)
-        
-       
-        $(".open-card-option").click(function(){
-          
-            var $menuCard = $(this).next('.menu-card');
-
-            if ($menuCard.hasClass('active')) {
-                $menuCard.removeClass('active');
-                
-            } else {
-               
-                $('.menu-card').removeClass('active');
-
-                $menuCard.addClass('active');
-            }
-        });
-
-    
-
-
-        
-        
-
-       
-
-      
-
-        
-
-
-        
-    </script>
+    <script src="./script.js"></script>
 </body>
 </html>

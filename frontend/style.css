@@ -9,6 +9,10 @@ body{
   font-family: "Inter", sans-serif;
 }
 
+body.dragging * {
+  user-select: none;
+}
+
 
 ul{
   list-style: none;
@@ -26,6 +30,51 @@ ul{
   
 }
 
+
+.tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+}
+
+
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 17px;
+}
+
+
+.tab button:hover {
+  background-color: #ddd;
+}
+
+
+.tab button.active {
+  background-color: #ccc;
+}
+
+
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  /* border: 1px solid #ccc; */
+  border-top: none;
+}
+
+
+@media screen and (min-width:800px) {
+  .tabcontent{
+    display: block !important;
+  }
+  
+}
+
 .container ul {
   flex: 1;
  
@@ -37,6 +86,25 @@ ul{
   flex: 1;
   height: 100vh;
 }
+
+.coluna-estagio h2{
+  font-size: 18px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.coluna-estagio h2::after{
+  content: '';
+  width: 100%;
+  height: 1.5px;
+  background: #BEBEBE;
+  position: absolute;
+  bottom: -5px;
+}
+
 
 .container ul .card {
   flex: 1;
@@ -76,12 +144,16 @@ ul{
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #F4F4F4;
+ background: none;
   border: none;
   border-radius: 4px;
   margin: 0px 0px 0px auto;
   cursor: pointer;
  
+}
+
+.open-card-option:hover, .open-card-option.active {
+  background: #F4F4F4;
 }
 
 .menu-card{
@@ -170,46 +242,10 @@ ul{
 }
 
 
-.tab {
-  overflow: hidden;
-  border: 1px solid #ccc;
-  background-color: #f1f1f1;
+.titulo-tarefa{
+  margin-top: 20px;
+  margin-top: 20px;
+  font-size: 18px;
+  font-weight: 500;
 }
 
-
-.tab button {
-  background-color: inherit;
-  float: left;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  padding: 14px 16px;
-  transition: 0.3s;
-  font-size: 17px;
-}
-
-
-.tab button:hover {
-  background-color: #ddd;
-}
-
-
-.tab button.active {
-  background-color: #ccc;
-}
-
-
-.tabcontent {
-  display: none;
-  padding: 6px 12px;
-  border: 1px solid #ccc;
-  border-top: none;
-}
-
-
-@media screen and (min-width:800px) {
-  .tabcontent{
-    display: block !important;
-  }
-  
-}
