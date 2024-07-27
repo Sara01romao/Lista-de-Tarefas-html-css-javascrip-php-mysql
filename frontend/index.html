@@ -15,6 +15,46 @@
     <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
 </head>
 <body>
+
+    <div class="modal add-tarefa-container">
+        <div class="add-tarefa-modal">
+            <h2>Cadastrar Tarefa</h2>
+            <form action="" >
+                <div class="campo-container">
+                    <label for="">Titulo</label>
+                    <input type="text" id="titulo">
+                </div>
+
+
+                <div class="campo-radio-container">
+                    <p>Etiqueta</p>
+                     
+                    <div class="radio-container">   
+                        <div class="campo-radio">
+                            <input type="radio" id="facil" name="etiqueta" value="facil">
+                            <label for="">Fácil</label>
+                        </div>
+                        <div class="campo-radio">
+                            <input type="radio" id="importante" name="etiqueta" value="importante">
+                            <label for="">Importante</label>
+                        </div>
+                        <div class="campo-radio">
+                            <input type="radio" id="urgente" name="etiqueta" value="urgente">
+                            <label for="">Urgente</label>
+                        </div>
+                    </div>
+                   
+
+                </div>
+
+
+                <button type="button" id="add-salvar">Salvar</button>
+            
+
+            </form>
+        </div>
+
+    </div>
     
     <h1>
         <svg width="17" height="21" viewBox="0 0 17 21" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -35,7 +75,7 @@
         <div class="coluna-estagio tabcontent" id="iniciar-coluna">
             <div class="header-coluna">
                 <h2>Inicio</h2>
-                <button>
+                <button class="add-btn" onclick="openAddModal('inicio')">
                     <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M15 7.5C15 7.66576 14.9342 7.82473 14.8169 7.94194C14.6997 8.05915 14.5408 8.125 14.375 8.125H8.125V14.375C8.125 14.5408 8.05915 14.6997 7.94194 14.8169C7.82473 14.9342 7.66576 15 7.5 15C7.33424 15 7.17527 14.9342 7.05806 14.8169C6.94085 14.6997 6.875 14.5408 6.875 14.375V8.125H0.625C0.45924 8.125 0.300269 8.05915 0.183058 7.94194C0.0658481 7.82473 0 7.66576 0 7.5C0 7.33424 0.0658481 7.17527 0.183058 7.05806C0.300269 6.94085 0.45924 6.875 0.625 6.875H6.875V0.625C6.875 0.45924 6.94085 0.300269 7.05806 0.183058C7.17527 0.0658481 7.33424 0 7.5 0C7.66576 0 7.82473 0.0658481 7.94194 0.183058C8.05915 0.300269 8.125 0.45924 8.125 0.625V6.875H14.375C14.5408 6.875 14.6997 6.94085 14.8169 7.05806C14.9342 7.17527 15 7.33424 15 7.5Z" fill="#747474"/>
                     </svg>
@@ -151,7 +191,7 @@
         <div class="coluna-estagio tabcontent" id="fazendo-coluna">
             <div class="header-coluna">
                 <h2>Fazendo</h2>
-                <button>
+                <button class="add-btn" onclick="openAddModal('fazendo')" >
                     <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M15 7.5C15 7.66576 14.9342 7.82473 14.8169 7.94194C14.6997 8.05915 14.5408 8.125 14.375 8.125H8.125V14.375C8.125 14.5408 8.05915 14.6997 7.94194 14.8169C7.82473 14.9342 7.66576 15 7.5 15C7.33424 15 7.17527 14.9342 7.05806 14.8169C6.94085 14.6997 6.875 14.5408 6.875 14.375V8.125H0.625C0.45924 8.125 0.300269 8.05915 0.183058 7.94194C0.0658481 7.82473 0 7.66576 0 7.5C0 7.33424 0.0658481 7.17527 0.183058 7.05806C0.300269 6.94085 0.45924 6.875 0.625 6.875H6.875V0.625C6.875 0.45924 6.94085 0.300269 7.05806 0.183058C7.17527 0.0658481 7.33424 0 7.5 0C7.66576 0 7.82473 0.0658481 7.94194 0.183058C8.05915 0.300269 8.125 0.45924 8.125 0.625V6.875H14.375C14.5408 6.875 14.6997 6.94085 14.8169 7.05806C14.9342 7.17527 15 7.33424 15 7.5Z" fill="#747474"/>
                     </svg>
@@ -267,7 +307,7 @@
         <div class="coluna-estagio tabcontent" id="concluido-coluna">
             <div class="header-coluna">
                 <h2>Concluído</h2>
-                <button>
+                <button class="add-btn" onclick="openAddModal('concluido')">
                     <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M15 7.5C15 7.66576 14.9342 7.82473 14.8169 7.94194C14.6997 8.05915 14.5408 8.125 14.375 8.125H8.125V14.375C8.125 14.5408 8.05915 14.6997 7.94194 14.8169C7.82473 14.9342 7.66576 15 7.5 15C7.33424 15 7.17527 14.9342 7.05806 14.8169C6.94085 14.6997 6.875 14.5408 6.875 14.375V8.125H0.625C0.45924 8.125 0.300269 8.05915 0.183058 7.94194C0.0658481 7.82473 0 7.66576 0 7.5C0 7.33424 0.0658481 7.17527 0.183058 7.05806C0.300269 6.94085 0.45924 6.875 0.625 6.875H6.875V0.625C6.875 0.45924 6.94085 0.300269 7.05806 0.183058C7.17527 0.0658481 7.33424 0 7.5 0C7.66576 0 7.82473 0.0658481 7.94194 0.183058C8.05915 0.300269 8.125 0.45924 8.125 0.625V6.875H14.375C14.5408 6.875 14.6997 6.94085 14.8169 7.05806C14.9342 7.17527 15 7.33424 15 7.5Z" fill="#747474"/>
                     </svg>
@@ -381,6 +421,9 @@
 
       
     </div>
+
+
+   
  
    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>

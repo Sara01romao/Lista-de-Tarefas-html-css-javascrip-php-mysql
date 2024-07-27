@@ -295,3 +295,32 @@ h1{
 }
 
 
+
+
+/**/
+
+.add-tarefa-modal form{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.radio-container{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.campo-radio{
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+
+.add-tarefa-modal form button{
+  width: 300px;
+  height: 40px;
+  cursor: pointer;
+}
