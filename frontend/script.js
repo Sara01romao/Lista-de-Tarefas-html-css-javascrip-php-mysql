@@ -73,7 +73,7 @@ new Sortable(concluido, {
 
 
   let btnsOpen = document.querySelectorAll(".open-card-option");
-  console.table(btnsOpen)
+ 
   
  
   $(".open-card-option").click(function(){
@@ -101,3 +101,20 @@ new Sortable(concluido, {
       }
   });
   
+
+
+
+  $("#add-salvar").click(function(){
+
+    const tituloTxt = document.getElementById("titulo").value;
+    const etiqueta = document.querySelector(".campo-radio input[name='etiqueta']:checked").value
+    console.log("campo: ", tituloTxt, "Etiqueta:", etiqueta)    
+  });
+
+
+
+
+  function openAddModal(estagio){
+     console.log(estagio)
+
+  } 
