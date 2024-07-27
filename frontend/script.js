@@ -104,17 +104,22 @@ new Sortable(concluido, {
 
 
 
-  $("#add-salvar").click(function(){
-
-    const tituloTxt = document.getElementById("titulo").value;
-    const etiqueta = document.querySelector(".campo-radio input[name='etiqueta']:checked").value
-    console.log("campo: ", tituloTxt, "Etiqueta:", etiqueta)    
-  });
+ 
 
 
-
-
+//abrir modal add
   function openAddModal(estagio){
-     console.log(estagio)
+    $('#colunaEstagio').val(estagio)
 
   } 
+
+ 
+// salvar
+  $("#add-salvar").click(function(){
+    const tituloTxt = document.getElementById("titulo").value;
+    const colunaEstagio = document.getElementById("colunaEstagio").value; 
+    const etiqueta = document.querySelector(".campo-radio input[name='etiqueta']:checked").value;
+    
+    
+    console.log("campo: ", tituloTxt, "Etiqueta:", etiqueta, "estagio:", colunaEstagio);    
+  });
