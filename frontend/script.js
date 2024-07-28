@@ -110,9 +110,28 @@ new Sortable(concluido, {
 //abrir modal add
   function openAddModal(estagio){
     $('#colunaEstagio').val(estagio)
+    $('.modal.add-tarefa-container').css('display','flex')
+
     
   } 
 
+
+
+//remove
+  $(".btnClose").click(function(){
+  
+     $('.modal.add-tarefa-container').css('display','none')
+
+     
+     $('.modal.add-tarefa-container h2 span').text('Cadastrar Tarefa')
+     $('#edit-icon').css('display','none')
+     $('#add-icon').css('display','flex')
+      
+
+  });
+
+
+ 
  
 // salvar
   $("#add-salvar").click(function(){
@@ -127,6 +146,12 @@ new Sortable(concluido, {
 
 
   $(".btnEditar").click(function(){
+
+    $('.modal.add-tarefa-container').css('display','flex')
+    $('.modal.add-tarefa-container h2 span').text('Editar Tarefa')
+    $('#edit-icon').css('display','flex')
+    $('#add-icon').css('display','none')
+
 
     const card =  $(this).closest('.card').attr('data-id');
     const estagio =  $(this).closest('ul').attr('id');
