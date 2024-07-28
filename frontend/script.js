@@ -110,7 +110,7 @@ new Sortable(concluido, {
 //abrir modal add
   function openAddModal(estagio){
     $('#colunaEstagio').val(estagio)
-
+    
   } 
 
  
@@ -122,4 +122,24 @@ new Sortable(concluido, {
     
     
     console.log("campo: ", tituloTxt, "Etiqueta:", etiqueta, "estagio:", colunaEstagio);    
+  });
+
+
+
+  $(".btnEditar").click(function(){
+
+    const card =  $(this).closest('.card').attr('data-id');
+    const estagio =  $(this).closest('ul').attr('id');
+    // const etiquetaTxt1 =  $(this).closest('.card').find('.etiqueta').text();
+    const tituloTxtEdit =  $(this).closest('.card').find('.titulo-tarefa').text();
+
+    $('#titulo').val(tituloTxtEdit);
+    $('#colunaEstagio').val(estagio);
+
+//    console.log(etiquetaTxt1)
+//       var etiquetaTxt = etiquetaTxt1;
+//     $(".radio-container input[name='etiqueta'][value='" + etiquetaTxt + "']").prop('checked', true);
+    
+    
+    console.log("card", card, "estagio:", estagio, etiquetaTxt)
   });
