@@ -307,7 +307,7 @@ h1{
   left: 0px;
   top: 0px;
   z-index: 999;
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
 }

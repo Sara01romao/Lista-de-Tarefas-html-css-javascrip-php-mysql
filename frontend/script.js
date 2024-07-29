@@ -104,7 +104,19 @@ new Sortable(concluido, {
 
 
 
- 
+
+// limpar campo 
+function limpaCampo(){
+    document.getElementById("titulo").value='';
+    document.getElementById("colunaEstagio").value=""; 
+    $('.campo-radio input[name=etiqueta]').prop('checked', false);
+
+
+    $('.modal.add-tarefa-container h2 span').text('Cadastrar Tarefa')
+    $('#edit-icon').css('display','none')
+    $('#add-icon').css('display','flex')
+    
+ }
 
 
 //abrir modal add
@@ -117,21 +129,15 @@ new Sortable(concluido, {
 
 
 
-//remove
+//fechar modal
   $(".btnClose").click(function(){
   
      $('.modal.add-tarefa-container').css('display','none')
-
+     limpaCampo()
      
-     $('.modal.add-tarefa-container h2 span').text('Cadastrar Tarefa')
-     $('#edit-icon').css('display','none')
-     $('#add-icon').css('display','flex')
-      
-
   });
 
 
- 
  
 // salvar
   $("#add-salvar").click(function(){
@@ -143,9 +149,12 @@ new Sortable(concluido, {
     console.log("campo: ", tituloTxt, "Etiqueta:", etiqueta, "estagio:", colunaEstagio);    
   });
 
+ 
+
 
 
   $(".btnEditar").click(function(){
+    $('.menu-card, .open-card-option').removeClass('active');
 
     $('.modal.add-tarefa-container').css('display','flex')
     $('.modal.add-tarefa-container h2 span').text('Editar Tarefa')
@@ -159,12 +168,14 @@ new Sortable(concluido, {
     const tituloTxtEdit =  $(this).closest('.card').find('.titulo-tarefa').text();
 
     $('#titulo').val(tituloTxtEdit);
-    $('#colunaEstagio').val(estagio);
 
-//    console.log(etiquetaTxt1)
-//       var etiquetaTxt = etiquetaTxt1;
-//     $(".radio-container input[name='etiqueta'][value='" + etiquetaTxt + "']").prop('checked', true);
-    
-    
-    console.log("card", card, "estagio:", estagio, etiquetaTxt)
+    // $(function() {
+    //     var $radios = $('input:radio[name=etiqueta]');
+    //     if($radios.is(':checked') === false) {
+    //         $radios.filter('[value=etiquetaTxt1]').prop('checked', true);
+    //     }
+    // });
+   
+
+
   });
