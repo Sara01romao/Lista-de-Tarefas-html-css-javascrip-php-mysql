@@ -1,58 +1,24 @@
-  // Inicializar o SortableJS
-  var inicio= document.getElementById('inicio');
-  var fazendo = document.getElementById('fazendo');
-  var concluido = document.getElementById('concluido');
+function updateDataStatus(event) {
+    const item = event.item; 
+    // const newContainerId = event.from.id; 
+   
+    const destinationContainerId = event.to.id; 
 
+    // Atualiza o data-status do card movido
+    item.setAttribute('data-status', destinationContainerId);
 
-//   new Sortable(inicio, {
-//       group: 'shared', 
-//       animation: 150
-//   });
+   
+}
 
-//   new Sortable(fazendo, {
-//       group: 'shared',
-//       animation: 150
-//   });
-//   new Sortable(concluido, {
-//       group: 'shared',
-//       animation: 150
-//   });
-
-  new Sortable(inicio, {
-    group: 'shared', 
-    animation: 150,
-    onStart: function () {
-        document.body.classList.add('dragging');
-    },
-    onEnd: function () {
-        document.body.classList.remove('dragging');
-    }
+// Inicializa o Sortable em todos os containers de lista
+const containers = document.querySelectorAll('.coluna-estagio ul');
+containers.forEach(container => {
+    new Sortable(container, {
+        group: 'shared',
+        animation: 150,
+        onEnd: updateDataStatus // Atualiza o data-status após a movimentação
+    });
 });
-
-new Sortable(fazendo, {
-    group: 'shared',
-    animation: 150,
-    onStart: function () {
-        document.body.classList.add('dragging');
-    },
-    onEnd: function () {
-        document.body.classList.remove('dragging');
-    }
-});
-
-new Sortable(concluido, {
-    group: 'shared',
-    animation: 150,
-    onStart: function () {
-        document.body.classList.add('dragging');
-    },
-    onEnd: function () {
-        document.body.classList.remove('dragging');
-    }
-});
-
-
-  
 
 
   function openColuna(evt, colunaName) {
@@ -148,8 +114,6 @@ function limpaCampo(){
     
     console.log("campo: ", tituloTxt, "Etiqueta:", etiqueta, "estagio:", colunaEstagio);    
   });
-
- 
 
 
 
