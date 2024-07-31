@@ -383,29 +383,20 @@ h1{
   font-size: 16px;
 }
 
-.campo-radio-container p{
+.campo-etiqueta-container p{
   font-size: 18px;
   font-weight: 500;
 }
 
-
-.radio-container{
-  display: flex;
-  align-items: center;
-  gap: 10px;
+#etiqueta-campo{
   margin-top: 12px;
-  justify-content: space-between;
+  width: 100%;
+  height: 35px;
+  padding: 0px 12px;
+  font-size: 16px;
 }
 
-.campo-radio{
-  display: flex;
-  align-items: center;
-  gap: 5px;
-}
 
-.campo-radio label {
-  font-size: 18px;
-}
 
 .add-tarefa-modal form button{
   max-width: 300px;

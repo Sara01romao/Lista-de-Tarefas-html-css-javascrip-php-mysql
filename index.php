@@ -76,24 +76,31 @@ include('db_config.php');
                 </div>
 
 
-                <div class="campo-radio-container">
+                <div class="campo-etiqueta-container">
                     <p>Etiqueta</p>
                     
+
+                    <select name="etiqueta" id="etiqueta-campo">
+                        <option value="">Selecionar</option>
+                        <option value="facil">Fácil</option>
+                        <option value="importante">Importante</option>
+                        <option value="urgente">Urgente</option>
+                    </select>
                      
-                    <div class="radio-container">   
+                    <!-- <div class="radio-container">   
                         <div class="campo-radio">
                             <input type="radio" id="facil" name="etiqueta" value="facil">
                             <label for="">Fácil</label>
                         </div>
                         <div class="campo-radio">
-                            <input type="radio" id="importante" name="etiqueta" value="importante">
+                            <input type="radio" id="importante" name="etiqueta" value="facil">
                             <label for="">Importante</label>
                         </div>
                         <div class="campo-radio">
                             <input type="radio" id="urgente" name="etiqueta" value="Urgente">
                             <label for="">Urgente</label>
                         </div>
-                    </div>
+                    </div> -->
                    
 
                 </div>
@@ -117,7 +124,7 @@ include('db_config.php');
     </h1>
 
     <div class="tab ">
-        <button class="tablinks" id="defaultOpen" onclick="openColuna(event, 'iniciar-coluna')">Iniciar</button>
+        <button class="tablinks" id="defaultOpen" onclick="openColuna(event, 'inicio-coluna')">Iniciar</button>
         <button class="tablinks" onclick="openColuna(event, 'fazendo-coluna')">Fazendo</button>
         <button class="tablinks" onclick="openColuna(event, 'concluido-coluna')">Concluído</button>
     </div>

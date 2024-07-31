@@ -75,7 +75,7 @@ containers.forEach(container => {
 function limpaCampo(){
     document.getElementById("titulo").value='';
     document.getElementById("colunaEstagio").value=""; 
-    $('.campo-radio input[name=etiqueta]').prop('checked', false);
+    document.getElementById("etiqueta-campo").value=""; 
 
 
     $('.modal.add-tarefa-container h2 span').text('Cadastrar Tarefa')
@@ -109,7 +109,7 @@ function limpaCampo(){
   $("#add-salvar").click(function(){
     const tituloTxt = document.getElementById("titulo").value;
     const colunaEstagio = document.getElementById("colunaEstagio").value; 
-    const etiqueta = document.querySelector(".campo-radio input[name='etiqueta']:checked").value;
+    const etiqueta = document.getElementById("etiqueta-campo").value;
     
     
     console.log("campo: ", tituloTxt, "Etiqueta:", etiqueta, "estagio:", colunaEstagio);    
@@ -126,19 +126,21 @@ function limpaCampo(){
     $('#add-icon').css('display','none')
 
 
+
+
     const card =  $(this).closest('.card').attr('data-id');
     const estagio =  $(this).closest('ul').attr('id');
-    // const etiquetaTxt1 =  $(this).closest('.card').find('.etiqueta').text();
     const tituloTxtEdit =  $(this).closest('.card').find('.titulo-tarefa').text();
+    const etiqueta  =  $(this).closest('.card').find('.etiqueta').text();
+    
+    
 
+
+   
     $('#titulo').val(tituloTxtEdit);
-
-    // $(function() {
-    //     var $radios = $('input:radio[name=etiqueta]');
-    //     if($radios.is(':checked') === false) {
-    //         $radios.filter('[value=etiquetaTxt1]').prop('checked', true);
-    //     }
-    // });
+    // $('#etiqueta-campo').val(tituloTxtEdit);
+    $("#etiqueta-campo option:contains('" + etiqueta + "')").prop('selected', true);
+   
    
 
 
