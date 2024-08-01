@@ -133,13 +133,14 @@ function limpaCampo(){
     const tituloTxtEdit =  $(this).closest('.card').find('.titulo-tarefa').text();
     const etiqueta  =  $(this).closest('.card').find('.etiqueta').text();
     
+   $('#etiqueta-campo ').val(etiqueta);
     
 
 
    
     $('#titulo').val(tituloTxtEdit);
     // $('#etiqueta-campo').val(tituloTxtEdit);
-    $("#etiqueta-campo option:contains('" + etiqueta + "')").prop('selected', true);
+    // $("#etiqueta-campo option:contains('" + etiqueta + "')").prop('selected', true);
    
    
 
