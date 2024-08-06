@@ -9,13 +9,29 @@ if(isset($_POST['dataCreate'])){
     $etiqueta = $tarefa_obj['etiqueta'];
     $estagio= $tarefa_obj['estagio'];
 
-    echo $titulo . " " . $etiqueta . " ". $estagio;
+   
 
     $create_sql = "INSERT INTO `tarefa`( `titulo_tarefa`, `id_etiqueta_tarefa`, `id_estagio_tarefa`) VALUES ('$titulo','$etiqueta','$estagio')";
     $result_create = mysqli_query($con, $create_sql);
     $id = mysqli_insert_id($con);
 
-    echo "Id" . $id;
+    $response = ['id' => $id];
+
+    if($result_create){
+        $sqlNovo = "SELECT tarefa.id_tarefa, tarefa.titulo_tarefa, etiquetas.id_etiqueta, etiquetas.nome_etiqueta, estagio.nome_estagio, estagio.id_estagio FROM tarefa 
+        INNER JOIN etiquetas ON etiquetas.id_etiqueta = tarefa.id_etiqueta_tarefa 
+        INNER JOIN estagio ON estagio.id_estagio = tarefa.id_estagio_tarefa 
+        WHERE tarefa.id_tarefa = $id";
+        $resultNovo = mysqli_query($con,  $sqlNovo);
+
+        $row = mysqli_fetch_assoc($resultNovo);
+
+        echo  json_encode($row) ;
+
+
+    }
+
+    // echo json_encode($response);
 
 }
 
