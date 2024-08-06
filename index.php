@@ -12,14 +12,18 @@ include('db_config.php');
         $id = $array['id_tarefa'];
         $titulo= $array['titulo_tarefa'];
         $etiqueta= $array['nome_etiqueta'];
+        $etiquetaId= $array['id_etiqueta'];
         $estagio= $array['nome_estagio'];
+        $estagioId= $array['id_estagio'];
+
+        
 
         echo $titulo ." - " . $estagio ."</br>";
 
         if (!isset($tarefasPorEstagio[$estagio])) {
             $tarefasPorEstagio[$estagio] = [];
         }
-        $tarefasPorEstagio[$estagio][] = ['id' => $id, 'titulo' => $titulo, 'etiqueta' => $etiqueta];
+        $tarefasPorEstagio[$estagio][] = ['id' => $id, 'titulo' => $titulo, 'etiqueta' => $etiqueta, 'etiquetaId' => $etiquetaId, 'estagioId' => $estagioId];
        
         
     }
@@ -417,10 +421,13 @@ include('db_config.php');
 
      <?php
         foreach ($tarefasPorEstagio as $estagio => $tarefas) {
-            echo '<div class="coluna-estagio tabcontent" id="' . htmlspecialchars($estagio) . '-coluna">
+        
+            $estagioId = !empty($tarefas) ? $tarefas[0]['estagioId'] : '';
+            
+            echo '<div class="coluna-estagio tabcontent" id="' . htmlspecialchars($estagio) . '-coluna" data-id="'.htmlspecialchars ($estagioId).'">
                 <div class="header-coluna">
                     <h2>' . htmlspecialchars($estagio) . '</h2>
-                    <button class="add-btn" onclick="openAddModal(\'' . htmlspecialchars($estagio) . '\')">
+                    <button class="add-btn" onclick="openAddModal(\'' . htmlspecialchars($estagioId) . '\')">
                         <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M15 7.5C15 7.66576 14.9342 7.82473 14.8169 7.94194C14.6997 8.05915 14.5408 8.125 14.375 8.125H8.125V14.375C8.125 14.5408 8.05915 14.6997 7.94194 14.8169C7.82473 14.9342 7.66576 15 7.5 15C7.33424 15 7.17527 14.9342 7.05806 14.8169C6.94085 14.6997 6.875 14.5408 6.875 14.375V8.125H0.625C0.45924 8.125 0.300269 8.05915 0.183058 7.94194C0.0658481 7.82473 0 7.66576 0 7.5C0 7.33424 0.0658481 7.17527 0.183058 7.05806C0.300269 6.94085 0.45924 6.875 0.625 6.875H6.875V0.625C6.875 0.45924 6.94085 0.300269 7.05806 0.183058C7.17527 0.0658481 7.33424 0 7.5 0C7.66576 0 7.82473 0.0658481 7.94194 0.183058C8.05915 0.300269 8.125 0.45924 8.125 0.625V6.875H14.375C14.5408 6.875 14.6997 6.94085 14.8169 7.05806C14.9342 7.17527 15 7.33424 15 7.5Z" fill="#747474"/>
                         </svg>
@@ -465,8 +472,9 @@ include('db_config.php');
                             </button>
                         </div>
                     </div>
-                    <p class="etiqueta"><span></span>' . htmlspecialchars($tarefa['etiqueta']) . '</p>
+                    <p class="etiqueta" data-id="'.htmlspecialchars ($tarefa['etiquetaId']).'" ><span></span>' . htmlspecialchars($tarefa['etiqueta']) . '</p>
                     <p class="titulo-tarefa">' . htmlspecialchars($tarefa['titulo']) . '</p>
+                    <p class="titulo-tarefa">' . htmlspecialchars( $tarefa['estagioId'] ).'</p>
                 </li>';
             }
             
