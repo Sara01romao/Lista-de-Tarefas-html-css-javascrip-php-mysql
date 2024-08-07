@@ -1,53 +1,58 @@
+// Função para atualizar os índices dos itens em uma lista
+function updateIndices(list) {
+    const items = list.querySelectorAll('li');
+    items.forEach((item, index) => {
+        item.dataset.index = index + 1;
+    });
+}
+
+// Função para tratar a atualização dos dados após a movimentação dos itens
 function updateDataStatus(event) {
     const item = event.item; 
-    const fromContainerId = event.from.id; 
+    const fromContainer = event.from;
+    const toContainer = event.to;
 
-    
-   
-   
-    const destinationEstagioNome = event.to.id; 
-    const destinationEstagioId= event.to.dataset.id;
+    const fromContainerId = fromContainer.id;
+    const toContainerId = toContainer.id;
 
+    const destinationEstagioId = toContainer.dataset.id;
 
-    if(fromContainerId != destinationEstagioNome){
-       
-        item.setAttribute('data-status', destinationEstagioNome);
-        var id = item.getAttribute('data-id')
-    
-        var objTarefaMove = {
+    console.log("De: ", fromContainerId, "Para:", toContainerId);
+
+    // Atualiza os índices nas listas de origem e destino
+    updateIndices(fromContainer);
+    updateIndices(toContainer);
+
+    if (fromContainerId !== toContainerId) {
+        item.setAttribute('data-status', toContainerId);
+        const id = item.getAttribute('data-id');
+
+        const objTarefaMove = {
             "id": id,
             "estagio": destinationEstagioId,
         };
-          
-        
-    
+
         $.ajax({
-            url: 'api.php', 
-            type: 'POST', 
+            url: 'api.php',
+            type: 'POST',
             data: { dataMove: JSON.stringify(objTarefaMove) },
             success: function(response) {
-               
                 console.log(response);
             }
         });
     }
-
-    
-
-   
 }
 
-// Inicializa o Sortable em todos os containers de lista
+// Inicializa o Sortable para todos os containers com a classe '.coluna-estagio'
 const containers = document.querySelectorAll('.coluna-estagio ul');
 containers.forEach(container => {
     new Sortable(container, {
         group: 'shared',
         animation: 150,
         onEnd: updateDataStatus // Atualiza o data-status após a movimentação
-        
-    
     });
 });
+
 
 
   function openColuna(evt, colunaName) {
@@ -154,6 +159,7 @@ function limpaCampo(){
           const tituloTxt = document.getElementById("titulo").value;
           const colunaEstagio = document.getElementById("colunaEstagio").value;
           const etiqueta = document.getElementById("etiqueta-campo").value;
+          const index = $(".coluna-estagio ul[data-id='" + colunaEstagio + "'] li").length + 1;
 
           if (tituloTxt === '') {
               Swal.showValidationMessage(`
@@ -162,10 +168,12 @@ function limpaCampo(){
               return false;
           }
 
+        
           var objTarefa = {
               "titulo": tituloTxt,
               "etiqueta": etiqueta,
               "estagio": colunaEstagio,
+              "index": index
           };
 
           console.log(objTarefa);
@@ -184,9 +192,12 @@ function limpaCampo(){
                   var id = tarefaNova.id_estagio;
                   console.log(id, "id");
 
+                  var index = $(".coluna-estagio ul[data-id='" + id + "'] li").length + 1;
+''
+
                   var novoCard = `
 
-                    <li class="card" data-status="${tarefaNova.nome_estagio}" data-id="${tarefaNova.id_tarefa}">
+                    <li class="card" data-index="${index}" data-status="${tarefaNova.nome_estagio}" data-id="${tarefaNova.id_tarefa}">
                      <div class="menu-card-container">
                         <button class="open-card-option">
                               <img src="Vector.svg" alt="menu-card">
@@ -227,6 +238,10 @@ function limpaCampo(){
 
                      
                   `;
+
+
+                  
+                 
                   
                   $(".coluna-estagio ul[data-id='" + id + "']").append(novoCard);
                   

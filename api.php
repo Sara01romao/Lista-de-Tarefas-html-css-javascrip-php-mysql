@@ -8,10 +8,11 @@ if(isset($_POST['dataCreate'])){
     $titulo = $tarefa_obj['titulo'];
     $etiqueta = $tarefa_obj['etiqueta'];
     $estagio= $tarefa_obj['estagio'];
+    $index= $tarefa_obj['index'];
 
    
 
-    $create_sql = "INSERT INTO `tarefa`( `titulo_tarefa`, `id_etiqueta_tarefa`, `id_estagio_tarefa`) VALUES ('$titulo','$etiqueta','$estagio')";
+    $create_sql = "INSERT INTO `tarefa`( `titulo_tarefa`, `id_etiqueta_tarefa`, `id_estagio_tarefa`, `index`) VALUES ('$titulo','$etiqueta','$estagio', '$index')";
     $result_create = mysqli_query($con, $create_sql);
     $id = mysqli_insert_id($con);
 

@@ -2,7 +2,7 @@
 
 include('db_config.php');
 
-    $sqlTarefas = "SELECT estagio.id_estagio, estagio.nome_estagio, tarefa.id_tarefa, tarefa.titulo_tarefa, etiquetas.id_etiqueta, etiquetas.nome_etiqueta 
+    $sqlTarefas = "SELECT estagio.id_estagio, estagio.nome_estagio, tarefa.id_tarefa, tarefa.titulo_tarefa, tarefa.index, etiquetas.id_etiqueta, etiquetas.nome_etiqueta 
                    FROM estagio 
                    LEFT JOIN tarefa ON estagio.id_estagio = tarefa.id_estagio_tarefa 
                    LEFT JOIN etiquetas ON etiquetas.id_etiqueta = tarefa.id_etiqueta_tarefa
@@ -16,6 +16,7 @@ include('db_config.php');
         $etiquetaId= $array['id_etiqueta'];
         $estagio= $array['nome_estagio'];
         $estagioId= $array['id_estagio'];
+        $index= $array['index'];
 
         
 
@@ -24,7 +25,7 @@ include('db_config.php');
         if (!isset($tarefasPorEstagio[$estagio])) {
             $tarefasPorEstagio[$estagio] = [];
         }
-        $tarefasPorEstagio[$estagio][] = ['id' => $id, 'titulo' => $titulo, 'etiqueta' => $etiqueta, 'etiquetaId' => $etiquetaId, 'estagioId' => $estagioId];
+        $tarefasPorEstagio[$estagio][] = ['id' => $id, 'titulo' => $titulo, 'etiqueta' => $etiqueta, 'etiquetaId' => $etiquetaId, 'estagioId' => $estagioId, 'index' => $index];
        
         
     }
@@ -443,7 +444,7 @@ include('db_config.php');
 
 
 
-                 echo '<li class="card" data-status="' . htmlspecialchars($estagio) . '" data-id="' . htmlspecialchars($tarefa['id']) . '">
+                 echo '<li class="card" data-index="' . htmlspecialchars($tarefa['index']) . '" data-status="' . htmlspecialchars($estagio) . '" data-id="' . htmlspecialchars($tarefa['id']) . '">
                         <div class="menu-card-container">
                             <button class="open-card-option">
                                 <svg width="5" height="16" viewBox="0 0 5 16" fill="none" xmlns="http://www.w3.org/2000/svg">
