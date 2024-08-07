@@ -2,10 +2,12 @@ function updateDataStatus(event) {
     const item = event.item; 
     // const newContainerId = event.from.id; 
    
-    const destinationContainerId = event.to.id; 
+    const destinationEstagio = event.to.id; 
 
     // Atualiza o data-status do card movido
-    item.setAttribute('data-status', destinationContainerId);
+    item.setAttribute('data-status', destinationEstagio);
+
+    
 
    
 }
