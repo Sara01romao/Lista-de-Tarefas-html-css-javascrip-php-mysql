@@ -31,8 +31,22 @@ if(isset($_POST['dataCreate'])){
 
     }
 
-    // echo json_encode($response);
+   
 
+}
+
+if(isset($_POST['dataMove'])){
+    $tarefa = json_decode($_POST['dataMove'], true);
+
+    $id = $tarefa['id'];
+    $estagio = $tarefa['estagio'];
+
+  
+
+    $sqlEditMove = "UPDATE `tarefa` SET `id_estagio_tarefa`='$estagio' WHERE `id_tarefa`  = $id";
+    $resultMove = mysqli_query($con, $sqlEditMove );
+    
+    echo "ok";
 }
 
 

@@ -1,11 +1,36 @@
 function updateDataStatus(event) {
     const item = event.item; 
-    // const newContainerId = event.from.id; 
-   
-    const destinationEstagio = event.to.id; 
+    const fromContainerId = event.from.id; 
 
-    // Atualiza o data-status do card movido
-    item.setAttribute('data-status', destinationEstagio);
+    
+   
+   
+    const destinationEstagioNome = event.to.id; 
+    const destinationEstagioId= event.to.dataset.id;
+
+
+    if(fromContainerId != destinationEstagioNome){
+       
+        item.setAttribute('data-status', destinationEstagioNome);
+        var id = item.getAttribute('data-id')
+    
+        var objTarefaMove = {
+            "id": id,
+            "estagio": destinationEstagioId,
+        };
+          
+        
+    
+        $.ajax({
+            url: 'api.php', 
+            type: 'POST', 
+            data: { dataMove: JSON.stringify(objTarefaMove) },
+            success: function(response) {
+               
+                console.log(response);
+            }
+        });
+    }
 
     
 
@@ -19,6 +44,8 @@ containers.forEach(container => {
         group: 'shared',
         animation: 150,
         onEnd: updateDataStatus // Atualiza o data-status após a movimentação
+        
+    
     });
 });
 

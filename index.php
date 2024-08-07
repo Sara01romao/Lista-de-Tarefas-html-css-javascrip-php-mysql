@@ -5,7 +5,8 @@ include('db_config.php');
     $sqlTarefas = "SELECT estagio.id_estagio, estagio.nome_estagio, tarefa.id_tarefa, tarefa.titulo_tarefa, etiquetas.id_etiqueta, etiquetas.nome_etiqueta 
                    FROM estagio 
                    LEFT JOIN tarefa ON estagio.id_estagio = tarefa.id_estagio_tarefa 
-                   LEFT JOIN etiquetas ON etiquetas.id_etiqueta = tarefa.id_etiqueta_tarefa ";
+                   LEFT JOIN etiquetas ON etiquetas.id_etiqueta = tarefa.id_etiqueta_tarefa
+                   ORDER BY estagio.id_estagio ASC";
     $resultTarefas = mysqli_query($con, $sqlTarefas);
     
     while ($array= mysqli_fetch_array($resultTarefas)){
