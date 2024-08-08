@@ -51,4 +51,47 @@ if(isset($_POST['dataMove'])){
 }
 
 
+if(isset($_POST['buscaId'])){
+    $id = json_decode($_POST['buscaId'], true);
+
+   
+    $sqlBusca = "SELECT tarefa.id_tarefa, tarefa.titulo_tarefa, etiquetas.id_etiqueta, etiquetas.nome_etiqueta, estagio.nome_estagio, estagio.id_estagio FROM tarefa 
+        INNER JOIN etiquetas ON etiquetas.id_etiqueta = tarefa.id_etiqueta_tarefa 
+        INNER JOIN estagio ON estagio.id_estagio = tarefa.id_estagio_tarefa 
+        WHERE tarefa.id_tarefa = $id";
+
+    $resultBusca = mysqli_query($con, $sqlBusca );
+
+    $busca = mysqli_fetch_assoc($resultBusca);
+
+    echo json_encode($busca);
+    
+}
+
+
+    if(isset($_POST['dataEdit'])){
+        $tarefa_obj = json_decode($_POST['dataEdit'], true);
+
+        $id = $tarefa_obj['id_tarefa'];
+        $titulo = $tarefa_obj['titulo'];
+        $etiqueta = $tarefa_obj['etiqueta'];
+        $estagio= $tarefa_obj['estagio'];
+        $index= $tarefa_obj['index'];
+
+        $sqlEdit = "UPDATE `tarefa` SET `id_estagio_tarefa`='$estagio' WHERE `id_tarefa` 
+        UPDATE `tarefa` SET `titulo_tarefa`='$titulo',`id_etiqueta_tarefa`='$etiqueta',`id_estagio_tarefa`='$estagio',`index`='$index' = $id";
+        $resultMove = mysqli_query($con, $sqlEdit );
+
+      
+
+        echo "ok edit";
+
+    
+
+    }
+
 ?>
+
+
+
+
