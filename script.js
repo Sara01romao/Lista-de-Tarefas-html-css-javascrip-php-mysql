@@ -416,6 +416,58 @@ $(document).ready(function () {
 
     
     });
+
+
+
+    $('.btnRemover').on('click', function() {
+        var removerId = $(this).data('id');
+
+
+        Swal.fire({
+            title: "Tem certeza de que deseja remover?",
+            html:``,
+            confirmButtonText: "Remover",
+            showCancelButton: true,
+            cancelButtonText: "Cancelar",
+
+        }).then((result) => {
+         
+          if (result.isConfirmed) {
+            
+            $.ajax({
+              url: 'api.php',
+              type: 'post',
+              data: { removerId: JSON.stringify(removerId)},
+
+              success: function (response) {
+               
+                Swal.fire({
+                    position: "center",
+                    icon: "success",
+                    title: "Removido com sucesso",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+
+                 
+
+                $(".coluna-estagio ul li[data-id='" + removerId + "']").remove();
+                
+              }
+
+            });
+
+
+           
+          } 
+        });
+
+
+    });
+
+
+
+
 });
 
 

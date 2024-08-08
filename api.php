@@ -100,6 +100,23 @@ if(isset($_POST['buscaId'])){
 
     }
 
+
+
+    if(isset($_POST['removerId'])){
+
+        $id = json_decode($_POST['removerId'], true);
+        
+        echo "remove" . $id;
+    
+        $delete_sql = "DELETE FROM `tarefa` WHERE id_tarefa=$id";
+
+        $result_remove = mysqli_query($con, $delete_sql);
+
+        echo "ok";
+        
+
+    }
+
 ?>
 
 
