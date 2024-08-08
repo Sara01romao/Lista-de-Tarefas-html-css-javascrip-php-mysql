@@ -72,19 +72,29 @@ if(isset($_POST['buscaId'])){
     if(isset($_POST['dataEdit'])){
         $tarefa_obj = json_decode($_POST['dataEdit'], true);
 
-        $id = $tarefa_obj['id_tarefa'];
+        $id = $tarefa_obj['id'];
         $titulo = $tarefa_obj['titulo'];
         $etiqueta = $tarefa_obj['etiqueta'];
-        $estagio= $tarefa_obj['estagio'];
-        $index= $tarefa_obj['index'];
-
-        $sqlEdit = "UPDATE `tarefa` SET `id_estagio_tarefa`='$estagio' WHERE `id_tarefa` 
-        UPDATE `tarefa` SET `titulo_tarefa`='$titulo',`id_etiqueta_tarefa`='$etiqueta',`id_estagio_tarefa`='$estagio',`index`='$index' = $id";
-        $resultMove = mysqli_query($con, $sqlEdit );
+        
 
       
 
-        echo "ok edit";
+        $sqlEdit = "UPDATE `tarefa` SET `titulo_tarefa`='$titulo',`id_etiqueta_tarefa`='$etiqueta' WHERE `id_tarefa` = $id";
+        $resultEdit = mysqli_query($con, $sqlEdit );
+
+
+    
+        $sqlEtiqueta = "SELECT  `nome_etiqueta` FROM `etiquetas` WHERE `id_etiqueta` =  $etiqueta";
+        $resultEtiqueta = mysqli_query($con, $sqlEtiqueta );
+
+        if($resultEtiqueta){
+
+            $response= mysqli_fetch_assoc($resultEtiqueta);
+            echo json_encode($response );
+        }
+      
+       
+       
 
     
 
