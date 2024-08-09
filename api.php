@@ -51,6 +51,9 @@ if(isset($_POST['dataMove'])){
 }
 
 
+
+
+
 if(isset($_POST['buscaId'])){
     $id = json_decode($_POST['buscaId'], true);
 
@@ -92,11 +95,6 @@ if(isset($_POST['buscaId'])){
             $response= mysqli_fetch_assoc($resultEtiqueta);
             echo json_encode($response );
         }
-      
-       
-       
-
-    
 
     }
 
