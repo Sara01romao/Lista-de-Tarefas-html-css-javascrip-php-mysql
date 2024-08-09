@@ -58,7 +58,7 @@ if(isset($_POST['buscaId'])){
     $id = json_decode($_POST['buscaId'], true);
 
    
-    $sqlBusca = "SELECT tarefa.id_tarefa, tarefa.titulo_tarefa, etiquetas.id_etiqueta, etiquetas.nome_etiqueta, estagio.nome_estagio, estagio.id_estagio FROM tarefa 
+    $sqlBusca = "SELECT tarefa.id_tarefa, tarefa.titulo_tarefa, etiquetas.id_etiqueta, etiquetas.nome_etiqueta, estagio.nome_estagio, estagio.id_estagio, tarefa.index FROM tarefa 
         INNER JOIN etiquetas ON etiquetas.id_etiqueta = tarefa.id_etiqueta_tarefa 
         INNER JOIN estagio ON estagio.id_estagio = tarefa.id_estagio_tarefa 
         WHERE tarefa.id_tarefa = $id";
